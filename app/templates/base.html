@@ -23,6 +23,7 @@
     <a href="{{ url_for('index') }}" class="brand-title">PaletteVault</a>
     <div class="nav-links">
       <a href="{{ url_for('index') }}" {% if request.endpoint == 'index' %}class="active"{% endif %}>Home</a>
+      <a href="{{ url_for('usage') }}" {% if request.endpoint in ('usage', 'log_product_usage') %}class="active"{% endif %}>Usage Log</a>
       <a href="{{ url_for('about') }}" {% if request.endpoint == 'about' %}class="active"{% endif %}>About Us</a>
       <a href="{{ url_for('login') }}" class="nav-button">Login</a>
     </div>

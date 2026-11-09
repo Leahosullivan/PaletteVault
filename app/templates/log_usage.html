@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="page-header">
+    <h2>{{ product.product_name }}</h2>
+    <p>{{ product.brand }} &middot; Shade: {{ product.shade or '-' }} &middot; {{ product.category }}</p>
+  </div>
+
+  <div class="split-layout">
+    <div class="form-card">
+      <h2>Log Usage</h2>
+      <div class="pan-row">
+        <span>Current Pan Progress</span>
+        <strong>{{ product.pan_progress }}%</strong>
+      </div>
+      <div class="progress-bar" style="margin-bottom: 1.2rem;"><div class="progress-fill" style="width: {{ product.pan_progress }}%;"></div></div>
+
+      <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+          {{ form.pan_progress.label }}<br>
+          {{ form.pan_progress(min=0, max=100) }}
+          {% for error in form.pan_progress.errors %}
+          <br><span class="form-error">[{{ error }}]</span>
+          {% endfor %}
+        </p>
+        <p>
+          {{ form.notes.label }}<br>
+          {{ form.notes(placeholder='e.g. Hit pan in the centre') }}
+          {% for error in form.notes.errors %}
+          <br><span class="form-error">[{{ error }}]</span>
+          {% endfor %}
+        </p>
+        <p>{{ form.submit(class_="btn") }}</p>
+      </form>
+      <p class="form-switch"><a href="{{ url_for('usage') }}">Back to Usage Log</a></p>
+    </div>
+
+    <div>
+      <div class="section-header">
+        <h3>Usage History</h3>
+        <span class="help-text">{{ history|length }} entr{{ 'y' if history|length == 1 else 'ies' }}</span>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th>Date</th><th>Pan Progress</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            {% for log in history %}
+            <tr>
+              <td>{{ log.log_date.strftime('%d %b %Y') }}</td>
+              <td><strong style="color: #ff007f;">{{ log.pan_progress }}%</strong></td>
+              <td>{{ log.notes or '-' }}</td>
+            </tr>
+            {% else %}
+            <tr><td colspan="3" class="empty-state">No usage logged yet.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}

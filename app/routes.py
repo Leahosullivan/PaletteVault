@@ -1,9 +1,11 @@
-# import render_template, redirect and url_for functions from flask
-from flask import render_template, redirect, url_for
+# import the Flask functions used by the routes
+from flask import render_template, redirect, url_for, flash, abort
 # import app variable from app package
 from app import app
-# import LoginForm and RegistrationForm classes from our forms.py file
-from app.forms import LoginForm, RegistrationForm
+# import the form classes from our forms.py file
+from app.forms import LoginForm, RegistrationForm, UsageForm
+# import the usage logging database functions
+from app.usage import get_products_with_usage, get_product, get_usage_history, log_usage
 
 
 # create an association for the URL /
@@ -35,6 +37,39 @@ def index():
     ]
 
     return render_template('index.html', title='Home', products=products)
+
+
+# create an association for the URL /usage
+@app.route('/usage')
+# list the user's products so one can be picked for logging
+def usage():
+    products = get_products_with_usage(app.config['DEMO_USER_ID'])
+    return render_template('usage.html', title='Usage Log', products=products)
+
+
+# create an association for the URL /usage/<product_id>
+@app.route('/usage/<int:product_id>', methods=['GET', 'POST'])
+# Use Case 3: log new pan progress for one product and show its history
+def log_product_usage(product_id):
+    product = get_product(product_id, app.config['DEMO_USER_ID'])
+    if product is None:
+        abort(404)
+
+    form = UsageForm()
+
+    if form.validate_on_submit():
+        log_usage(product_id, form.pan_progress.data, form.notes.data)
+        flash(f"Usage saved - {product['product_name']} is now at "
+              f"{form.pan_progress.data}% pan progress.", 'success')
+        return redirect(url_for('log_product_usage', product_id=product_id))
+
+    # pre-fill the box with the current value the first time the page loads
+    if form.pan_progress.data is None and not form.is_submitted():
+        form.pan_progress.data = product['pan_progress']
+
+    history = get_usage_history(product_id)
+    return render_template('log_usage.html', title='Log Usage', product=product,
+                           form=form, history=history)
 
 
 # create an association for the URL /about

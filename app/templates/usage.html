@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="page-header">
+    <h2>Usage Log</h2>
+    <p>Choose a product to record how much you have used it. Every entry is saved so you can see your pan progress over time.</p>
+  </div>
+
+  <div class="card-grid">
+    {% for product in products %}
+    <div class="card">
+      <span class="brand-tag">{{ product.brand }}</span>
+      <h4 class="product-title">{{ product.product_name }}</h4>
+      <p class="product-meta">Shade: {{ product.shade or '-' }} | Category: {{ product.category }}</p>
+      <div class="pan-row">
+        <span>Pan Progress</span>
+        <strong>{{ product.pan_progress }}%</strong>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width: {{ product.pan_progress }}%;"></div></div>
+      <p class="expiry-line">
+        {% if product.last_logged %}
+          {{ product.log_count }} log{{ '' if product.log_count == 1 else 's' }} &middot; last logged {{ product.last_logged.strftime('%d %b %Y') }}
+        {% else %}
+          Not logged yet
+        {% endif %}
+      </p>
+      <div class="card-actions">
+        <a href="{{ url_for('log_product_usage', product_id=product.product_id) }}" class="btn btn-small">Log Usage</a>
+      </div>
+    </div>
+    {% else %}
+    <p class="empty-state">There are no products in your vault yet.</p>
+    {% endfor %}
+  </div>
+{% endblock %}
