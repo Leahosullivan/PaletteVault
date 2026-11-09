@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<style>
+  .about-hero {
+    background: #fff5f9;
+    border: 1px solid #ffb3da;
+    border-radius: 16px;
+    padding: 2rem 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .about-hero h2 {
+    margin: 0 0 0.6rem 0;
+    font-size: 2rem;
+    color: #222222;
+  }
+
+  .about-hero p {
+    margin: 0;
+    color: #555555;
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.8rem;
+  }
+
+  .feature-card {
+    background: #ffffff;
+    border: 1px solid #e8e8e8;
+    border-radius: 16px;
+    padding: 1.6rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  }
+
+  .feature-icon {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .feature-card h3 {
+    margin: 0 0 0.5rem 0;
+    color: #ff007f;
+    font-size: 1.25rem;
+  }
+
+  .feature-card p {
+    margin: 0;
+    color: #666666;
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .mission-box {
+    margin-top: 2.5rem;
+    background: #fafafa;
+    border: 1px dashed #ffb3da;
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    text-align: center;
+  }
+
+  .mission-box h4 {
+    margin: 0 0 0.4rem 0;
+    color: #ff007f;
+    font-size: 1.1rem;
+  }
+
+  .mission-box p {
+    margin: 0;
+    color: #444444;
+    font-size: 0.95rem;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+  <div class="about-hero">
+    <h2>About PaletteVault</h2>
+    <p>PaletteVault is an intelligent makeup collection manager designed to help beauty enthusiasts track PAO expiration dates, monitor pan progress, and organise their stash effectively.</p>
+  </div>
+
+  <div class="about-grid">
+    <div class="feature-card">
+      <span class="feature-icon">⏳</span>
+      <h3>Expiry Warnings</h3>
+      <p>Stay ahead of Period After Opening (PAO) limits to keep your cosmetics safe and fresh.</p>
+    </div>
+
+    <div class="feature-card">
+      <span class="feature-icon">📊</span>
+      <h3>Pan Progress</h3>
+      <p>Visually log usage and monitor pan progress across palettes, lipsticks, and skin essentials.</p>
+    </div>
+
+    <div class="feature-card">
+      <span class="feature-icon">🛍️</span>
+      <h3>Smart Stash</h3>
+      <p>Organise your vanity digitally to avoid duplicate buys and reduce unnecessary product waste.</p>
+    </div>
+  </div>
+
+  <div class="mission-box">
+    <h4>Our Mission</h4>
+    <p>Promoting mindful consumption, preventing expired makeup usage, and keeping your beauty routine structured and organized.</p>
+  </div>
+{% endblock %}

@@ -1,0 +1,246 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<style>
+  .hero-banner {
+    background: #fff5f9;
+    border: 1px solid #ffb3da;
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .hero-text h2 {
+    margin: 0 0 0.4rem 0;
+    color: #222222;
+    font-size: 1.8rem;
+  }
+
+  .hero-text p {
+    margin: 0;
+    color: #666666;
+  }
+
+  .stat-ribbon {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .stat-pill {
+    background: #ffffff;
+    border: 1px solid #ffd1e8;
+    border-radius: 12px;
+    padding: 0.6rem 1rem;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+  }
+
+  .stat-pill .num {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #ff007f;
+    display: block;
+  }
+
+  .stat-pill .lbl {
+    font-size: 0.7rem;
+    color: #777777;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* Barcode Scanner Bar */
+  .scan-bar {
+    background: #fafafa;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 0.7rem 1rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .scan-input-group {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex-grow: 1;
+  }
+
+  .scan-icon {
+    font-size: 1.2rem;
+    color: #ff007f;
+    font-weight: bold;
+  }
+
+  .scan-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #333333;
+    font-size: 0.95rem;
+    width: 100%;
+  }
+
+  .scan-input::placeholder {
+    color: #888888;
+  }
+
+  .scan-btn {
+    background: #ff007f;
+    border: none;
+    color: #ffffff;
+    padding: 0.65rem 1.3rem;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .scan-btn:hover {
+    background: #d6006b;
+  }
+
+  /* Modal */
+  .scanner-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .scanner-box {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 420px;
+    text-align: center;
+    position: relative;
+  }
+
+  .camera-viewport {
+    width: 100%;
+    height: 200px;
+    background: #f9f9f9;
+    border: 2px dashed #ff007f;
+    border-radius: 12px;
+    margin: 1.2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .laser-line {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #ff007f;
+    animation: scanAnimation 2s infinite ease-in-out;
+  }
+
+  @keyframes scanAnimation {
+    0% { top: 10%; }
+    50% { top: 90%; }
+    100% { top: 10%; }
+  }
+
+  .close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.5rem;
+    color: #888888;
+    cursor: pointer;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+  <div class="hero-banner">
+    <div class="hero-text">
+      <h2>My Vault Collection</h2>
+      <p>Track pan progress, monitor PAO warnings, and organise your beauty stash.</p>
+    </div>
+    <div class="stat-ribbon">
+      <div class="stat-pill">
+        <span class="num">{{ products|length }}</span>
+        <span class="lbl">Products</span>
+      </div>
+      <div class="stat-pill">
+        <span class="num" style="color: #d6006b;">{{ products|selectattr('expiring')|list|length }}</span>
+        <span class="lbl">Expiring</span>
+      </div>
+      <div class="stat-pill">
+        <span class="num" style="color: #0088cc;">{{ (products|sum(attribute='pan') / products|length)|round|int }}%</span>
+        <span class="lbl">Avg Pan</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Barcode Scanner Input Bar -->
+  <div class="scan-bar">
+    <div class="scan-input-group">
+      <span class="scan-icon">|||</span>
+      <input type="text" id="barcodeInput" class="scan-input" placeholder="Enter EAN/UPC barcode or scan product tag...">
+    </div>
+    <button class="scan-btn" onclick="openScanner()">
+      Scan Barcode
+    </button>
+  </div>
+
+  <h3 style="margin-bottom: 1rem; color: #222222;">Active Beauty Vault Items</h3>
+
+  <div class="dashboard-grid">
+    {% for product in products %}
+    <div class="card">
+      <span class="{{ 'badge-expiring' if product.expiring else 'badge-fresh' }}">{{ product.status }}</span>
+      <span class="brand-tag">{{ product.brand }}</span>
+      <h4 class="product-title">{{ product.name }}</h4>
+      <p style="color: #666666; font-size: 0.85rem; margin: 0 0 1rem 0;">Shade: {{ product.shade }} | Category: {{ product.category }}</p>
+      <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #666666;">
+        <span>Pan Progress</span>
+        <span style="color: #ff007f; font-weight: bold;">{{ product.pan }}%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width: {{ product.pan }}%;"></div></div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Barcode Scanner Modal Window -->
+  <div class="scanner-modal" id="scannerModal">
+    <div class="scanner-box">
+      <span class="close-modal" onclick="closeScanner()">&times;</span>
+      <h3 style="margin: 0; color: #222222; font-size: 1.3rem;">Barcode Scanner</h3>
+      <p style="color: #666666; font-size: 0.85rem; margin-top: 5px;">Align the product barcode within the frame</p>
+
+      <div class="camera-viewport">
+        <div class="laser-line"></div>
+        <span style="font-size: 0.85rem; color: #666666; margin-top: 8px;">Scanning EAN-13 / UPC Code...</span>
+      </div>
+
+      <button class="scan-btn" style="width: 100%; justify-content: center;" onclick="simulateScan()">
+        Simulate Successful Scan
+      </button>
+    </div>
+  </div>
+{% endblock %}

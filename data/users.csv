@@ -1,0 +1,6 @@
+user_id,username,email,password,created_at
+1,leah_osullivan,leah.osullivan@example.com,PaletteVault1!,2026-09-01 10:15:00
+2,aoife_murphy,aoife.murphy@example.com,PaletteVault1!,2026-09-03 14:02:00
+3,ciara_byrne,ciara.byrne@example.com,PaletteVault1!,2026-09-10 09:41:00
+4,niamh_kelly,niamh.kelly@example.com,PaletteVault1!,2026-09-18 19:27:00
+5,saoirse_doyle,saoirse.doyle@example.com,PaletteVault1!,2026-10-02 16:55:00

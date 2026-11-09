@@ -1,0 +1,12 @@
+import pytest
+
+from app import app as flask_app
+
+
+@pytest.fixture
+def client():
+    flask_app.config['TESTING'] = True
+    # turn off CSRF so the tests can submit forms
+    flask_app.config['WTF_CSRF_ENABLED'] = False
+    with flask_app.test_client() as client:
+        yield client

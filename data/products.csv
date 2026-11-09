@@ -1,0 +1,33 @@
+product_id,user_id,brand,product_name,shade,category,barcode,opened_date,pao_months,pan_progress
+1,1,NARS Cosmetics,Radiant Creamy Concealer,Custard,Face,2100000079193,2025-12-01,12,65
+2,1,Fenty Beauty,Gloss Bomb Universal Lip Luminizer,Fenty Glow,Lips,2100000158386,2026-03-14,12,20
+3,1,Maybelline,Lash Sensational Sky High Mascara,Very Black,Eyes,2100000237579,2026-08-25,3,70
+4,1,Charlotte Tilbury,Airbrush Flawless Finish Setting Powder,Fair,Face,2100000316762,2025-06-10,24,45
+5,1,Rare Beauty,Soft Pinch Liquid Blush,Joy,Cheeks,2100000395958,2026-05-02,12,30
+6,1,Huda Beauty,Naughty Nude Eyeshadow Palette,Naughty Nude,Eyes,2100000475148,2025-02-20,24,15
+7,1,Benefit Cosmetics,Gimme Brow+ Volumizing Gel,3 Warm Light Brown,Brows,2100000554331,2026-06-01,6,55
+8,1,MAC Cosmetics,Matte Lipstick,Velvet Teddy,Lips,2100000633524,2024-10-05,24,80
+9,1,Estee Lauder,Double Wear Stay-in-Place Foundation,1W1 Bone,Face,2100000712717,2025-11-20,12,50
+10,1,e.l.f. Cosmetics,Power Grip Primer,Clear,Face,2100000791903,2026-09-05,12,10
+11,1,Urban Decay,24/7 Glide-On Eye Pencil,Zero,Eyes,2100000871094,2025-10-28,12,35
+12,1,Glossier,Cloud Paint,Puff,Cheeks,2100000950287,2026-07-15,12,25
+13,2,Too Faced,Better Than Sex Mascara,Black,Eyes,2100001029470,2026-07-01,3,85
+14,2,Clinique,Almost Lipstick,Black Honey,Lips,2100001108663,2025-08-12,18,60
+15,2,L'Oreal Paris,True Match Foundation,1.N Ivory,Face,2100001187859,2026-02-10,12,40
+16,2,NYX Professional Makeup,Butter Gloss,Creme Brulee,Lips,2100001267049,2026-04-22,12,50
+17,2,Anastasia Beverly Hills,Brow Wiz,Soft Brown,Brows,2100001346232,2026-01-15,12,75
+18,2,Bobbi Brown,Skin Concealer Stick,Warm Ivory,Face,2100001425425,2025-09-30,12,20
+19,3,Tarte,Shape Tape Concealer,16N Fair Neutral,Face,2100001504618,2026-05-18,12,45
+20,3,Benefit Cosmetics,Hoola Matte Bronzer,Hoola,Cheeks,2100001583804,2024-12-01,24,90
+21,3,Charlotte Tilbury,Matte Revolution Lipstick,Pillow Talk,Lips,2100001662998,2026-01-03,18,35
+22,3,Lancome,Lash Idole Mascara,Glossy Black,Eyes,2100001742188,2026-09-12,3,30
+23,3,Milani,Baked Blush,Luminoso,Cheeks,2100001821371,2025-04-04,24,55
+24,3,Morphe,35O Nature Glow Eyeshadow Palette,35O,Eyes,2100001900564,2025-07-19,24,25
+25,4,Fenty Beauty,Pro Filt'r Soft Matte Foundation,150,Face,2100001979751,2026-03-01,12,60
+26,4,Dior,Lip Glow Oil,001 Pink,Lips,2100002058943,2026-06-20,12,40
+27,4,Rimmel London,Stay Matte Pressed Powder,001 Transparent,Face,2100002138133,2024-11-11,24,70
+28,4,Kiko Milano,Unlimited Double Touch Lipstick,103 Natural Rose,Lips,2100002217326,2026-08-08,12,15
+29,5,Revolution Beauty,Conceal & Define Concealer,C2,Face,2100002296512,2026-04-30,12,35
+30,5,Essence,Lash Princess False Lash Effect Mascara,Black,Eyes,2100002375705,2026-10-01,3,20
+31,5,Makeup by Mario,Soft Sculpt Shaping Stick,Light,Cheeks,2100002454899,2026-02-27,12,30
+32,5,Benefit Cosmetics,"Precisely, My Brow Pencil",3.5 Neutral Medium Brown,Brows,2100002534089,2026-07-22,12,45

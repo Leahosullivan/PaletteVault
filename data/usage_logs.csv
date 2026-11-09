@@ -1,0 +1,86 @@
+log_id,product_id,log_date,pan_progress,notes
+1,27,2025-01-26,15,Applied with a damp sponge
+2,8,2025-03-23,46,Swatched new combinations
+3,27,2025-05-20,36,Starting to see the pan
+4,6,2025-05-21,15,Weekend looks only
+5,23,2025-08-28,33,Swatched new combinations
+6,4,2025-10-03,18,Light application this week
+7,20,2025-10-04,10,Travel bag essential
+8,23,2025-11-12,43,Travel bag essential
+9,18,2025-11-21,7,Used for a night out
+10,14,2025-12-14,11,Swatched new combinations
+11,8,2025-12-31,58,Swatched new combinations
+12,8,2026-01-07,66,Light application this week
+13,18,2026-01-15,20,Light application this week
+14,27,2026-01-21,45,Packed for holiday
+15,20,2026-02-01,20,Layered over primer
+16,11,2026-02-13,2,Packed for holiday
+17,24,2026-02-13,7,Hit pan in the centre
+18,20,2026-03-14,75,Starting to see the pan
+19,9,2026-03-27,7,Travel bag essential
+20,25,2026-03-27,6,Used for a wedding look
+21,9,2026-04-11,23,Applied with a damp sponge
+22,11,2026-04-25,35,Swatched new combinations
+23,16,2026-04-25,4,Applied with a damp sponge
+24,17,2026-04-25,2,Weekend looks only
+25,21,2026-04-26,13,Weekend looks only
+26,25,2026-04-26,41,Swatched new combinations
+27,15,2026-05-08,4,Applied with a damp sponge
+28,25,2026-05-09,60,Used for a wedding look
+29,9,2026-05-18,50,Light application this week
+30,4,2026-05-21,28,Applied with a damp sponge
+31,15,2026-05-25,36,Layered over primer
+32,4,2026-05-29,45,Hit pan in the centre
+33,7,2026-06-15,12,Light application this week
+34,15,2026-06-17,40,Layered over primer
+35,2,2026-06-19,18,Used daily for work
+36,26,2026-06-26,3,Starting to see the pan
+37,31,2026-07-01,22,Light application this week
+38,1,2026-07-06,25,Applied with a damp sponge
+39,1,2026-07-11,50,Light application this week
+40,7,2026-07-15,33,Layered over primer
+41,13,2026-07-15,29,Applied with a damp sponge
+42,24,2026-07-16,25,Layered over primer
+43,21,2026-07-20,35,Used for a night out
+44,12,2026-07-24,6,Swatched new combinations
+45,17,2026-07-24,30,Light application this week
+46,13,2026-07-29,66,Light application this week
+47,13,2026-07-30,82,Used for a night out
+48,2,2026-08-04,20,Starting to see the pan
+49,16,2026-08-04,44,Starting to see the pan
+50,32,2026-08-05,7,Hit pan in the centre
+51,16,2026-08-09,50,Applied with a damp sponge
+52,5,2026-08-10,16,Travel bag essential
+53,17,2026-08-10,32,Light application this week
+54,29,2026-08-14,3,Light application this week
+55,13,2026-08-18,85,Hit pan in the centre
+56,1,2026-08-19,65,Travel bag essential
+57,19,2026-08-19,1,Travel bag essential
+58,12,2026-08-22,25,Weekend looks only
+59,28,2026-08-23,15,Layered over primer
+60,5,2026-08-24,30,Used daily for work
+61,29,2026-08-25,35,Travel bag essential
+62,26,2026-08-28,31,Light application this week
+63,3,2026-09-02,18,Packed for holiday
+64,19,2026-09-03,14,Used for a night out
+65,8,2026-09-07,80,Light application this week
+66,3,2026-09-08,41,Used for a wedding look
+67,14,2026-09-09,55,Used daily for work
+68,14,2026-09-12,60,Used daily for work
+69,32,2026-09-12,38,Travel bag essential
+70,19,2026-09-16,45,Light application this week
+71,22,2026-09-18,16,Packed for holiday
+72,7,2026-09-22,55,Packed for holiday
+73,26,2026-09-22,40,Weekend looks only
+74,27,2026-09-22,70,Starting to see the pan
+75,32,2026-10-06,45,Swatched new combinations
+76,30,2026-10-09,11,Packed for holiday
+77,17,2026-10-10,75,Used daily for work
+78,22,2026-10-10,30,Used for a night out
+79,31,2026-10-19,30,Used for a wedding look
+80,3,2026-10-21,43,Hit pan in the centre
+81,3,2026-10-23,70,Weekend looks only
+82,10,2026-10-23,10,Weekend looks only
+83,20,2026-10-28,90,Travel bag essential
+84,30,2026-10-31,20,Weekend looks only
+85,23,2026-11-04,55,Used for a wedding look
