@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% macro field(f, css='') %}
+  <p class="{{ css }}">
+    {{ f.label }}<br>
+    {{ f(**kwargs) }}
+    {% for error in f.errors %}
+    <br><span class="form-error">[{{ error }}]</span>
+    {% endfor %}
+  </p>
+{% endmacro %}
+
+{% block content %}
+  <div class="form-card wide">
+    <h1>Add a Product</h1>
+
+    {% if lookup %}
+      <div class="lookup-note">
+        Barcode found: <strong>{{ lookup.brand }} {{ lookup.product_name }}</strong>.
+        The details have been filled in for you - just add the date you opened it.
+      </div>
+    {% endif %}
+
+    <form action="" method="post" novalidate>
+      {{ form.hidden_tag() }}
+      <div class="form-grid">
+        {{ field(form.barcode, 'full', placeholder='e.g. 2100000079193') }}
+        {{ field(form.brand) }}
+        {{ field(form.product_name) }}
+        {{ field(form.shade) }}
+        {{ field(form.category) }}
+        {{ field(form.opened_date) }}
+        {{ field(form.pao_months, min=1, max=60) }}
+        {{ field(form.pan_progress, 'full', min=0, max=100) }}
+      </div>
+      <p class="help-text">PAO is the open-jar number on the packaging (e.g. 12M). The expiry date is worked out from the opened date and PAO.</p>
+      <p>{{ form.submit(class_="btn") }}</p>
+    </form>
+    <p class="form-switch"><a href="{{ url_for('index') }}">Back to my vault</a></p>
+  </div>
+{% endblock %}
